@@ -11,7 +11,7 @@ export default function TransactionFilterNew(props) {
       <button type="button" className="btn btn-success"  onClick={handleClickModal}>
         <i className="fa fa-plus"></i> NOVO LANÇAMENTO
       </button>
-      <input type="text" placeholder="Filtro" />
+      <input type="text" onChange={(e) => props.OnFilter(e.target.value)} placeholder="Filtro" />
     </div>
   );
 }

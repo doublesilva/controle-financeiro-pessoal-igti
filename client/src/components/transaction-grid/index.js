@@ -21,7 +21,7 @@ export default function TransactionGrid(props) {
 
   return (
     <div className={`transactionGrid`}>
-      {props.Transactions.sort((a, b)=> +a.day - +b.day).map((transaction) => (
+      {props.Transactions.filter(transaction => !props.Filter || transaction.description.toLowerCase().includes(props.Filter.toLowerCase())).sort((a, b)=> +a.day - +b.day).map((transaction) => (
         <div
           key={transaction.id}
           className={`transactionGridItem ${

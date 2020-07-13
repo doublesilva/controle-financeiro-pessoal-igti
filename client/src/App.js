@@ -11,7 +11,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
 export default function App() {
-  
   const [transactionEdit, setTransaction] = React.useState({});
   const [transactions, setTransactions] = React.useState([]);
   const [showModalNew, setShowModalNew] = React.useState(false);
@@ -19,22 +18,24 @@ export default function App() {
   const [yearMonth, setYearMonth] = React.useState();
   const [showAlert, setShowAlert] = React.useState(false);
   const [showAlertMessage, setShowAlertMessage] = React.useState(false);
-  
+  const [filterDescription, setFilterDescription] = React.useState();
   const onSetCloseNewModal = (show) => {
     setShowModalNew(show);
   };
-  
+
   const onSetCloseEditModal = (show) => {
     setShowModalEdit(show);
   };
-  
+
   const handleOnEdit = (transaction) => {
     setShowModalEdit(true);
     setTransaction({ ...transaction });
   };
 
   const handleOnDelete = (transaction) => {
-    if (window.confirm("Você tem certeza que deseja remover este lançamento?")) {
+    if (
+      window.confirm("Você tem certeza que deseja remover este lançamento?")
+    ) {
       fetch(`/api/transaction/${transaction.id}`, {
         method: "DELETE",
         headers: {
@@ -91,7 +92,10 @@ export default function App() {
       });
     }
   };
-
+  const handleOnFilter = (filter) => {
+    console.log('handleOnFilter', filter);
+    setFilterDescription(filter);
+  };
   const messageAlert = (message) => {
     setShowAlertMessage(message);
     setShowAlert(true);
@@ -110,11 +114,14 @@ export default function App() {
         />
         <TransactionTotal Transactions={transactions} />
         <TransactionFilterNew
+          OnFilter={(filter) => handleOnFilter(filter)}
           onSetShowModel={(show) => onSetCloseNewModal(show)}
-        />        
+        />
         <Alert className="fixed-bottom" show={showAlert} variant="success">
-        <strong><h4>{showAlertMessage}</h4></strong>
-        </Alert>      
+          <strong>
+            <h4>{showAlertMessage}</h4>
+          </strong>
+        </Alert>
 
         <TransactionModal
           Transaction={{}}
@@ -137,7 +144,8 @@ export default function App() {
         <TransactionGrid
           OnDelete={(transaction) => handleOnDelete(transaction)}
           OnEdit={(transaction) => handleOnEdit(transaction)}
-          Transactions={transactions}
+          Transactions={transactions} 
+          Filter={filterDescription}
         />
       </center>
     </div>
