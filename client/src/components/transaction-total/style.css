@@ -1,0 +1,9 @@
+.formInline{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    border: 2px groove;
+    border-radius: 5px;
+    margin-top: 10px;
+}

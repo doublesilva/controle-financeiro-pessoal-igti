@@ -69,7 +69,7 @@ transactionRouter.put("/:id", async (request, response) => {
     response.send({message: `Foi modificado ${nModified} item`});
   } catch (error) {
     messageError.error = error.message;
-    ressponse.status(500).send(messageError);
+    response.status(500).send(messageError);
   }
 });
 
@@ -87,7 +87,7 @@ transactionRouter.delete("/:id", async (request, response) => {
     response.send({ message: `Foi deletado ${deletedCount} item`});
   } catch (error) {
     messageError.error = error.message;
-    ressponse.status(500).send(messageError);
+    response.status(500).send(messageError);
   }
 });
 

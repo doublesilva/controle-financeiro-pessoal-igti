@@ -1,0 +1,19 @@
+.inputLabel {
+  display: flex;
+  flex-direction: row;
+}
+
+.inputLabel label {
+  margin-left: 10px;
+}
+.labelText{
+    font-weight: bold;
+}
+
+.labelValue.positivo {
+  color: green;
+}
+
+.labelValue.negativo {
+  color: red;
+}
