@@ -1,9 +1,13 @@
+.transactionGrid{
+    height: 100vh;
+}
+
 .transactionGridItem{    
     display: flex;
     flex-direction: row;
     justify-content: stretch;
     align-items: center;
-    padding: 20px;
+    padding: 20px;    
 }
 
 .transactionGridDay{
