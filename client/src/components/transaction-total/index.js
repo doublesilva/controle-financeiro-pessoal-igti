@@ -6,7 +6,7 @@ const formattedMoney =  new Intl.NumberFormat('pt-BR', {
   currency: 'BRL'
 });
 export default function TransactionTotal(props) {
-  const somatorio = props.Transactions.reduce(
+  const somatorio = props.Transactions.filter(transaction => !props.Filter || transaction.description.toLowerCase().includes(props.Filter.toLowerCase())).reduce(
     (acumulador, proximo) => {
       acumulador.lancamento += 1;
       if (proximo.type === "+") acumulador.receita += proximo.value;

@@ -1,13 +1,22 @@
 import React from "react";
 import "./style.css";
 
+
+var nomeMeses = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEC'];
+
 function getYearMonths() {
   const yearMonths = [];
   const yearNow = new Date().getFullYear();
-  let years = [yearNow - 1, yearNow];
+  let years = [yearNow - 1, yearNow, yearNow + 1];
   for (const year of years) {
     for (let month = 1; month <= 12; month++) {
-      yearMonths.push(`${year}-${month.toString().padStart(2, "0")}`);
+      const formatter = new Intl.DateTimeFormat('pt-BR', { month: 'short' });
+      
+      
+      const key = `${year}-${month.toString().padStart(2, "0")}`;
+      const value = `${nomeMeses[month-1]}/${year}`;
+      console.log('DataFormat', key, value);
+      yearMonths.push({key, value});
     }
   }
   return yearMonths;
@@ -21,32 +30,27 @@ export default function TransactionNav(props) {
   const [disableNext=false, setDisableNext] = React.useState();
 
   const yearMonths = getYearMonths();
-  React.useEffect(() => {
-    handleChangeDate();
-  }, [])
-
+  
   React.useEffect(() => {
     const data = yearMonth.split("-");
     if (+data[1] === 1 && +data[0] === (yearNow - 1)) {
         setDisablePrevious(true);
       } else   setDisablePrevious(false);
 
-      if (+data[1] === 12 && +data[0] === (yearNow)) {
+      if (+data[1] === 12 && +data[0] === (yearNow + 1)) {
         setDisableNext(true);
       } else   setDisableNext(false);
-
+      props.ChangeYearMonth(yearMonth);
   }, [yearMonth])
 
   const handleClickPrevious = () => {
     const result = setMonth(-1);
-    setYearMonth(result);
-    handleChangeDate();
+    setYearMonth(result);        
   };
 
   const handleClickNext = () => {
     const result = setMonth(1);
-    setYearMonth(result);
-    handleChangeDate();    
+    setYearMonth(result);    
   };
 
   const setMonth = (increment) =>{
@@ -63,14 +67,9 @@ export default function TransactionNav(props) {
   }
 
   const handleChangeTransaction = (e) => {
-      console.log('handleChangeTransaction', e.target.value);
-    setYearMonth(e.target.value);
-    handleChangeDate();
+    console.log('handleChangeTransaction', e.target.value);
+    setYearMonth(e.target.value);    
   };
-
-  const handleChangeDate = () =>{
-    props.ChangeYearMonth(yearMonth);
-  }
 
   return (
     <div className="transaction-nav">
@@ -88,8 +87,8 @@ export default function TransactionNav(props) {
         required=""
       >
         {yearMonths.map((item) => (
-          <option key={item} value={item}>
-            {item}
+          <option key={item.key} value={item.key}>
+            {item.value}
           </option>
         ))}
       </select>

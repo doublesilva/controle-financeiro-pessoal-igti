@@ -52,7 +52,8 @@ export default function App() {
   };
 
   const handleChangeDate = (yearMonth) => {
-    fetch(`/api/transaction/${yearMonth}`).then(async (response) => {
+    console.log('api-handleChangeDate',yearMonth);
+    fetch(`/api/transaction/${yearMonth}`).then(async (response) => {      
       const result = await response.json();
       setTransactions(result);
     });
@@ -112,7 +113,7 @@ export default function App() {
         <TransactionNav
           ChangeYearMonth={(yearMonth) => handleChangeDate(yearMonth)}
         />
-        <TransactionTotal Transactions={transactions} />
+        <TransactionTotal  Filter={filterDescription} Transactions={transactions} />
         <TransactionFilterNew
           OnFilter={(filter) => handleOnFilter(filter)}
           onSetShowModel={(show) => onSetCloseNewModal(show)}

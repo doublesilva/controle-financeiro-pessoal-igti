@@ -114,7 +114,7 @@ export default function TransactionModal(props) {
                 <Form.Label>Valor:</Form.Label>
                 <Form.Control
                   type="number"
-                  required
+                  required step=".01"
                   value={transaction.value}
                   onChange={(e) => handleChanTransaction({value: e.target.value})}
                 />
