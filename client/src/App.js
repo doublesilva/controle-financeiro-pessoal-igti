@@ -106,8 +106,7 @@ export default function App() {
   };
 
   return (
-    <div className="app">
-      <center>
+    <div className="app">      
         <h3>Bootcamp Full Stack - Desafio Final</h3>
         <p>Controle Financeiro Pessoal</p>
         <TransactionNav
@@ -125,7 +124,7 @@ export default function App() {
         </Alert>
 
         <TransactionModal
-          Transaction={{}}
+          Transaction={{yearMonthDay:`${yearMonth}-01`}}
           OnSubmit={(transaction) =>
             handleSubmitTransaction("new", transaction)
           }
@@ -147,8 +146,7 @@ export default function App() {
           OnEdit={(transaction) => handleOnEdit(transaction)}
           Transactions={transactions} 
           Filter={filterDescription}
-        />
-      </center>
+        />      
     </div>
   );
 }

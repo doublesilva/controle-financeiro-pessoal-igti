@@ -10,12 +10,8 @@ function getYearMonths() {
   let years = [yearNow - 1, yearNow, yearNow + 1];
   for (const year of years) {
     for (let month = 1; month <= 12; month++) {
-      const formatter = new Intl.DateTimeFormat('pt-BR', { month: 'short' });
-      
-      
       const key = `${year}-${month.toString().padStart(2, "0")}`;
-      const value = `${nomeMeses[month-1]}/${year}`;
-      console.log('DataFormat', key, value);
+      const value = `${nomeMeses[month-1]}/${year}`;      
       yearMonths.push({key, value});
     }
   }
@@ -40,6 +36,7 @@ export default function TransactionNav(props) {
       if (+data[1] === 12 && +data[0] === (yearNow + 1)) {
         setDisableNext(true);
       } else   setDisableNext(false);
+      // eslint-disable-next-line
       props.ChangeYearMonth(yearMonth);
   }, [yearMonth])
 
@@ -72,8 +69,7 @@ export default function TransactionNav(props) {
   };
 
   return (
-    <div className="transaction-nav">
-        <div>{disablePrevious}</div>
+    <div className="transaction-nav">        
       <button
         type="button"
         disabled={disablePrevious}        

@@ -4,17 +4,20 @@
     flex-direction: row;
     justify-content: stretch;
     margin-top: 20px;
-    padding: 10px;
+    padding-bottom: 10px;
 }
 
-.divfilterNew input{
-    height: 40px;
+.divfilterNew [type=button]{   
+    width: 300px !important;
+}
+
+.divfilterNew input{    
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
-    border-bottom: 2px groove;
+    border-bottom: 2px solid;
     margin-left: 10px;
     border-radius: 10px;
     padding-left: 10px;
-    width: 89%;
+    width: 100%;
 }

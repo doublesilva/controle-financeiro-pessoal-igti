@@ -7,7 +7,7 @@
 }
 
 .transactionGridDay{
-    font-size: 18px;
+    font-size: 1.4em;
     font-weight: bold;
     width: 5%;
 }
@@ -17,7 +17,7 @@
 }
 
 .transactionGridItem.positivo{
-    background-color: rgb(54, 255, 47);
+    background-color: rgb(13, 146, 9);
 }
 
 .transactionGridItem{
@@ -29,15 +29,18 @@
     box-sizing: border-box;
     flex-direction: column;
     align-content: space-between;
-    text-align: justify;
     width: 60%;
+    margin-left: 10px;
+    font-size: 1.4em;
 }
 .transactionGridValue{
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
-    width: 15%;
+    margin-left: 10px;
     text-align: justify;
+    font-weight: bold;
+    font-size: 1.4em;
 }
 
 .transactionGridActions{
@@ -46,4 +49,5 @@
     flex-direction: row-reverse;
     width: 20%;
     justify-items: right;
+    margin-left: 10px;
 }

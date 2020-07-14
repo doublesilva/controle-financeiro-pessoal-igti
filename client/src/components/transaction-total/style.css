@@ -3,7 +3,8 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 10px;
-    border: 2px groove;
+    border: 2px solid;
     border-radius: 5px;
     margin-top: 10px;
+    flex-wrap: wrap;
 }

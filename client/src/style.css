@@ -7,8 +7,8 @@
   
   body{
     background: #f2f2f2;
-    color: #000;
-    
+    color: #000;   
+    font-family: 'Roboto', sans-serif; 
   }
   
   .app{
@@ -16,4 +16,12 @@
     display: flex;
     flex-direction: column;  
     height: 100vh;
+    box-sizing: border-box;
+    align-self: center;  
+    max-width: 700px;
+    margin: auto;
+  }
+
+  .app h3, p{
+    margin: auto;
   }
